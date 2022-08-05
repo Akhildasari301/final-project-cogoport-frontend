@@ -5,58 +5,65 @@ import CreateBlog from './components/CreateBlog';
 import ShowBlogs from './components/ShowBlogs'
 import UpadteBlog from './components/UpdateBlog';
 import ShowOwnBlogs from './components/ShowOwnBlogs';
+import ShowOwnBlog from './components/ShowOwnBlog';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import './../src/App.css'
+import ShowRandomBlogs from './components/ShowRandomBlogs';
+
+
+
+
 const { useState, useEffect } = require("react");
 
 const baseURL = 'http://localhost:3000'
 
-const user_id = 2;
+// const user_id = 1;
 
 const App = () => {
 
   const [blogs, setBlogs] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
+  const [user_id, setUserID] = useState(1)
 
 
-  const getBlogs = async () => {
-    var response = await axios.get(baseURL + '/blogs').then((response) => response.data)
-    console.log(response)
-    setBlogs(response)
-    console.log(blogs)
-  }
+
+
+  // const getBlogs = async () => {
+  //   var response = await axios.get(baseURL + '/blogs').then((response) => response.data)
+  //   // console.log(response)
+  //   setBlogs(response)
+  //   // console.log(blogs)
+  // }
   useEffect(
-    () => getBlogs(), []
+    () => {
+      const getBlogs = async () => {
+        var response = await axios.get(baseURL + '/blogs').then((response) => response.data)
+        // console.log(response)
+        setBlogs(response)
+        // console.log(blogs)
+      }
+
+      getBlogs();
+    }
+    
+
+    , []
   )
   return (
     <>
-    <header>
-      <div>
-        <BrowserRouter>
-        <Link to={`/new/${user_id}`}>
-        <button>Create New</button>
-        </Link>
-        </BrowserRouter>
-      </div>
-      <div>BLOGGER LITE</div>
-     
-      <div>
-        <BrowserRouter>
-        <Link to={`allmyown/${user_id}`}>
-        <button>Show My Blogs</button>
-        </Link>
-        </BrowserRouter>
-        
-      </div>
-    </header>
-    {/* <ShowBlogs blogs={blogs} /> */}
+    {/* <header className='header'>
+      <div className="logo">BLOGGER LITE</div>
+    </header> */}
     <BrowserRouter>
     <Routes>
-      <Route path="/blog/:id" element={<UpadteBlog />}></Route>
-      <Route path="/allmyown/:id" element={<ShowOwnBlogs baseURL={baseURL} />}></Route>
-      <Route path="/new/:id" element={<CreateBlog user_id={user_id} baseURL={baseURL}/>}></Route>
-      <Route path="" element={}></Route>
-      <Route path="" element={}></Route>
-      <Route path="" element={}></Route>
-      <Route path="" element={}></Route>
+      <Route path="/updateblog/:id" element={<UpadteBlog blogs={blogs} baseURL={baseURL} user_id={user_id}/>}></Route>
+      <Route path="/allmyown" element={<ShowOwnBlogs baseURL={baseURL} user_id={user_id}/>}></Route>
+      <Route path="/new" element={<CreateBlog user_id={user_id} baseURL={baseURL}/>}></Route>
+      <Route path="/myblog/:id" element={<ShowOwnBlog baseURL={baseURL} user_id={user_id} blogs={blogs}/>}></Route>
+      <Route path="/" element={<Login baseURL={baseURL} />} ></Route>
+      <Route path="/signup" element={<Signup baseURL={baseURL} setUserID={setUserID}/>}></Route>
+      <Route path="/getrandomblogs" element={<ShowRandomBlogs baseURL={baseURL} user_id={user_id}/>}></Route>
     </Routes>
     </BrowserRouter>
     </>

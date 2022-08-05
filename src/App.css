@@ -36,3 +36,111 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  align-items: center;
+  background-color: rgb(43, 63, 176);
+}
+
+
+
+button {
+  font-size: 1.2rem;
+  border-radius: 10px;
+  padding: 5px;
+  border: 4px groove white;
+  background-color: rgb(105, 188, 72);
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.blog {
+  padding: 5px;
+  margin: 5px;
+  border: 2px solid blue;
+  max-width: 30%;
+  border-radius: 10px;
+}
+
+.blog div {
+  margin: 5px
+}
+
+.blog .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.blog .viewblogButton {
+  text-align: center;
+}
+
+.blog .authorName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.blogs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+button:hover {
+  padding: 6px;
+  /* transition: 5s; */
+  /* background-color: red; */
+}
+
+.create-blog, .updateBlog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 4px solid blue
+}
+
+.create-blog input, .updateBlog input {
+  font-size: 1.5rem;
+}
+
+.create-blog textarea, .updateBlog textarea {
+  font-size: 1.3rem;
+  /* width: 50%;
+  height: 50%; */
+  columns: 10;
+}
+
+/* .updateBlog {
+
+} */
+
+.signup, .login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px
+}
+
+.signup input, .login input {
+  font-size: 1.3rem;
+  margin: 10px;
+  padding: 5px
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog {
+  max-width: 30%;
+}

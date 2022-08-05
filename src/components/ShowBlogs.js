@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 // import './style.css'
+import './../../src/App.css'
 
 
 
@@ -16,11 +17,11 @@ const ShowBlogs = (props) => {
                 {
                     props.blogs.map(
                         (blog) => {
-                            console.log(blog)
+                            // console.log(blog)
                             return (
                                 <>
                                     <div className='blog'>
-                                        <div>Title: {blog.title}</div>
+                                        <div className="title">Title: {blog.title}</div>
                                         <div>Author: {blog.authorName}</div>
                                         <div>Content: {blog.content}</div>
                                         
