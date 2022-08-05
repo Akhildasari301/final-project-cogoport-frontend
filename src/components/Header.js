@@ -5,9 +5,16 @@ const Header = (props) => {
     <header className='header'>
       <div>
 
+        <div>
+          <Link to={'/getrandomblogs'}>
+          <button>Home</button>
+          </Link>
         <Link to={`/new`}>
         <button>Create New</button>
         </Link>
+        </div>
+
+        
 
 
       </div>
@@ -20,9 +27,15 @@ const Header = (props) => {
      
       <div>
 
+        <div>
         <Link to={`/allmyown`}>
         <button>Show My Blogs</button>
         </Link>
+        <Link to={'/'}>
+          <button>Logout</button>
+        </Link>
+        </div>
+        
 
         
       </div>

@@ -2,8 +2,10 @@ import Base from "antd/lib/typography/Base"
 import { responsiveArray } from "antd/lib/_util/responsiveObserve"
 import axios from "axios"
 import { useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 const Signup = (props) => {
+
+    const navigate = useNavigate()
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -29,15 +31,10 @@ const Signup = (props) => {
                     (e) => setPassword(e.target.value)
                 } required></input>
             </div>
-            <Link to={'/getrandomblogs'}>
+            
             <button onClick={
                 () => {
                     console.log('signup clickeed')
-                    // fetch(props.baseURL + '/signup', {method: "POST", body: {
-                    //     "name": name,
-                    //     "email": email,
-                    //     "password": password
-                    // } })
                     const sign = async (name, email, password) => {
                         await axios.post(props.baseURL + '/signup', {
                             "name": name,
@@ -45,11 +42,13 @@ const Signup = (props) => {
                             "password": password
                         }).then((response) => props.setUserID(response.data))
                     }
-                    sign(name, email, password)
-                    // if (localStorage.getItem('user_id'))
-                    // props.user_id = 
+                   
+                    if (name !== '' && email !== '' && password !== '') {
+                        sign(name, email, password)
+                        navigate('/getrandomblogs')
+                    }
                 }
-            } type={"Submit"}>Sign up</button></Link>
+            } type={"Submit"}>Sign up</button>
 
         </form>
         </>

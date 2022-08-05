@@ -16,7 +16,7 @@ const ShowRandomBlogs = (props) => {
 
     return (
         <>
-           <header className='header'>
+           {/* <header className='header'>
       <div>
         <Link to={`/new`}>
         <button>Create New</button>
@@ -24,9 +24,9 @@ const ShowRandomBlogs = (props) => {
       </div>
  
 
-      {/* <Link to="/"> */}
+
       <div className='logo'>BLOGGER LITE</div>
-      {/* </Link> */}
+
       
      
       <div>
@@ -37,7 +37,8 @@ const ShowRandomBlogs = (props) => {
 
         
       </div>
-    </header>
+    </header> */}
+    <Header />
 
             <div className="blogs">
                 {

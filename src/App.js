@@ -25,6 +25,14 @@ const App = () => {
   const [blogs, setBlogs] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
   const [user_id, setUserID] = useState(1)
+  console.log(user_id)
+  // useEffect(
+  //   () => {
+  //     if (localStorage.getItem('user_id')) {
+  //       setUserID(JSON.parse(localStorage.getItem('user_id')))
+  //     }
+  //   }, []
+  // )
 
 
 
@@ -61,7 +69,7 @@ const App = () => {
       <Route path="/allmyown" element={<ShowOwnBlogs baseURL={baseURL} user_id={user_id}/>}></Route>
       <Route path="/new" element={<CreateBlog user_id={user_id} baseURL={baseURL}/>}></Route>
       <Route path="/myblog/:id" element={<ShowOwnBlog baseURL={baseURL} user_id={user_id} blogs={blogs}/>}></Route>
-      <Route path="/" element={<Login baseURL={baseURL} />} ></Route>
+      <Route path="/" element={<Login baseURL={baseURL} setUserID={setUserID} />} ></Route>
       <Route path="/signup" element={<Signup baseURL={baseURL} setUserID={setUserID}/>}></Route>
       <Route path="/getrandomblogs" element={<ShowRandomBlogs baseURL={baseURL} user_id={user_id}/>}></Route>
     </Routes>
