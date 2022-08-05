@@ -40,12 +40,16 @@ const Signup = (props) => {
                             "name": name,
                             "email": email,
                             "password": password
-                        }).then((response) => props.setUserID(response.data))
+                        }).then((response) => {
+                            
+                            props.setUserID(response.data)
+                        })
                     }
                    
                     if (name !== '' && email !== '' && password !== '') {
                         sign(name, email, password)
                         navigate('/getrandomblogs')
+
                     }
                 }
             } type={"Submit"}>Sign up</button>

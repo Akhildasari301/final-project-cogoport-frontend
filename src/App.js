@@ -24,7 +24,7 @@ const App = () => {
 
   const [blogs, setBlogs] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
-  const [user_id, setUserID] = useState(1)
+  const [user_id, setUserID] = useState(JSON.parse(localStorage.getItem('user_id')))
   console.log(user_id)
   // useEffect(
   //   () => {
@@ -34,6 +34,20 @@ const App = () => {
   //   }, []
   // )
 
+  useEffect(() => {
+    if(localStorage.getItem('user_id')) {
+      setUserID(JSON.parse(localStorage.getItem('user_id')))
+    } 
+  }, [])
+
+  useEffect(() => {
+    const dataInLocal = localStorage.getItem('user_id')
+    if (dataInLocal){
+      localStorage.setItem('user_id', JSON.stringify(user_id))
+    } else {
+      localStorage.setItem('user_id', JSON.stringify(1))
+    }
+  },[user_id])
 
 
 
