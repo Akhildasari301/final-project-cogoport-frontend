@@ -22,11 +22,12 @@ const ShowOwnBlog = (props) => {
     return (
         <>
             <Header />
-            <div className='blog'>
-                <div>Title: {blog.title}</div>
-                <div>Author: {blog.authorName}</div>
-                <div>Content: {blog.content}</div>
-                {blog.user_id === props.user_id ?
+            <div className='blog oneblog'>
+                <div className='title'>{blog.title}</div>
+                <div className='authorName'>{blog.authorName}</div>
+                <div className='created-at'>created at: {blog.created_at}</div>
+                <div className='content'>{blog.content}</div>
+                {blog.authorName === props.user_name ?
                     (
                         <>
                             <Link to={`/updateblog/${blog.id}`}>
@@ -45,15 +46,6 @@ const ShowOwnBlog = (props) => {
 
             </div>
 
-            {/* <div className="card" style="width: 18rem;">
-                <div className="card-body">
-                    <h5 className="card-title">{blog.title}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted">{blog.authorName}</h6>
-                    <p className="card-text">{blog.content}</p>
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                </div>
-            </div> */}
         </>
     )
 }

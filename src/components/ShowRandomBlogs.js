@@ -47,9 +47,12 @@ const ShowRandomBlogs = (props) => {
                             // console.log(blog)
                             return (
                                 <div className='blog' key={blog.id}>
-                                    <div className="title">Title: {blog.title}</div>
-                                    <div className="authorName">Author: {blog.authorName}</div>
-                                    <div>{blog.content}</div>
+                                    <div className='blog-body'>
+                                    <div className="title">{blog.title}</div>
+                                    <div className="authorName">By {blog.authorName}</div>
+                                    <div className='created-at'>created at: {blog.created_at}</div>
+                                    <div className="content">{blog.content}</div>
+                                    </div>
                                     <Link to={`/myblog/${blog.id}`}>
                                         <div className="viewblogButton">
                                             <button >View Blog</button>

@@ -42,7 +42,8 @@ const Signup = (props) => {
                             "password": password
                         }).then((response) => {
                             
-                            props.setUserID(response.data)
+                            props.setUserID(response.data.id)
+                            props.setUserName(response.data.name)
                         })
                     }
                    

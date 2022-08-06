@@ -22,7 +22,8 @@ const Login = (props) => {
                         setError('Invalid Credentials')
                         navigate('/')
                     } else {
-                        props.setUserID(response.data.id)
+                        props.setUserID(response.data.user.id)
+                        props.setUserName(response.data.user.name)
                         navigate('/getrandomblogs')
                     }
                 }, (error) => console.log(error)).catch(err=>console.log(err))  
@@ -45,9 +46,16 @@ const Login = (props) => {
                 </div>
                 <div className="buttons">
                 <button type="submit" onClick={test}>Login</button>
+                <br></br>
+                <div>
+                    
+                
                     <Link to={"/signup"}>
                         <button>Sign up</button>
                     </Link>
+                    Not Already a User ? 
+                </div>
+                
                 </div>
                 <div className="error-message">{error}</div>
             </form>
