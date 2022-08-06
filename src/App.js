@@ -2,7 +2,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import CreateBlog from './components/CreateBlog';
-import ShowBlogs from './components/ShowBlogs'
 import UpadteBlog from './components/UpdateBlog';
 import ShowOwnBlogs from './components/ShowOwnBlogs';
 import ShowOwnBlog from './components/ShowOwnBlog';
@@ -32,10 +31,14 @@ const App = () => {
   useEffect(() => {
     if(localStorage.getItem('user_id')) {
       setUserID(JSON.parse(localStorage.getItem('user_id')))
-    } 
+    } else {
+      localStorage.setItem('user_id', JSON.stringify(1))
+    }
     if(localStorage.getItem('user_name')) {
       setUserName(JSON.parse(localStorage.getItem('user_name')))
-    } 
+    } else {
+      localStorage.setItem('user_name', JSON.stringify(''))
+    }
   }, [])
 
   useEffect(() => {
@@ -43,7 +46,7 @@ const App = () => {
     if (dataInLocal){
       localStorage.setItem('user_id', JSON.stringify(user_id))
     } else {
-      localStorage.setItem('user_id', JSON.stringify(1))
+      localStorage.setItem('user_id', JSON.stringify(0))
     }
   },[user_id])
 
@@ -93,7 +96,8 @@ const App = () => {
       <Route path="/" element={<Login baseURL={baseURL} setUserID={setUserID} user_name={user_name} setUserName={setUserName}/>} ></Route>
       <Route path="/signup" element={<Signup baseURL={baseURL} setUserID={setUserID} user_name={user_name} setUserName={setUserName}/>}></Route>
       <Route path="/getrandomblogs" element={<ShowRandomBlogs baseURL={baseURL} user_id={user_id} user_name={user_name}/>}></Route>
-      <Route path="/*/*" element={<ShowRandomBlogs baseURL={baseURL} user_id={user_id} />}></Route>
+      <Route path="/*" element={<ShowRandomBlogs baseURL={baseURL} user_id={user_id} />}></Route>
+      
     </Routes>
     </BrowserRouter>
     </>

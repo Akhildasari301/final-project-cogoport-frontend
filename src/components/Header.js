@@ -1,6 +1,7 @@
-import { BrowserRouter, Link } from "react-router-dom"
-
+import { BrowserRouter, Link} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const Header = (props) => {
+  const navigate = useNavigate()
     return (
     <header className='header'>
       <div>
@@ -31,9 +32,15 @@ const Header = (props) => {
         <Link to={`/allmyown`}>
         <button>Show My Blogs</button>
         </Link>
-        <Link to={'/'}>
-          <button>Logout</button>
-        </Link>
+        {/* <Link to={'/'}> */}
+          <button onClick={
+            () => {
+              
+              navigate('/')
+              // props.setUserID(0)
+            }
+          }>Logout</button>
+        {/* </Link> */}
         </div>
         
 

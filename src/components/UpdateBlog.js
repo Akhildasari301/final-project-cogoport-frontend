@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import ShowBlogs from "./ShowBlogs"
 import { Link } from 'react-router-dom'
-
+import Header from './Header'
+import './../App.css'
 const UpadteBlog = (props) => {
     const params = useParams()
     // const getBlog = async (idToCheck) => {
@@ -30,13 +30,14 @@ const UpadteBlog = (props) => {
 
     return (
         <>
+        <Header user_name={props.user_name} />
             <form className="updateBlog">
                 <input type="text" defaultValue={title} onChange={
                     (e) => setTitle(e.target.value)
-                }></input>
+                } class="update-title"></input>
                 <br></br>
-                <textarea defaultValue={content} rows='8' cols='20' onChange={(e) => 
-                    setContent(e.target.value)}></textarea>
+                <textarea defaultValue={content} rows='20' cols='60' onChange={(e) => 
+                    setContent(e.target.value)} className={"update-title"}></textarea>
                 <br></br>
                 <Link to={'/allmyown'}>
                 <button type="Submit" onClick={

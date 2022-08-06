@@ -23,7 +23,15 @@ const Signup = (props) => {
             </div>
             <div>
                 <input type="email" name="email" placeholder="Email"  onChange={
-                    (e) => setEmail(e.target.value)
+                    (e) => {
+                        // var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                        // if(email.match(validRegex)){
+                        //     setEmail(e.target.value)
+                        // } else (
+                        //     e.target.defaultValue = 'invalid email'
+                        // )
+                        setEmail(e.target.value)
+                        }
                 } required></input>
             </div>
             <div>

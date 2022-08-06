@@ -3,7 +3,7 @@ import { useParams, useSearchParams } from "react-router-dom"
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Header from './Header'
-
+import HackerError from './HackerError'
 const ShowOwnBlogs = (props) => {
     const [ownBlogs, setOwnBlogs] = useState([])
     const getBlogs = async (id) => {
@@ -16,16 +16,16 @@ const ShowOwnBlogs = (props) => {
    
     return (
         <>
-        <Header />
+        <Header user_id={props.user_id}/>
+        <HackerError user_id={props.user_id} />
         <div className="blogs own-blogs">
-            {console.log(ownBlogs)}
 
-        
             {
                 ownBlogs.map(
                     (blog) => {
                         // console.log(blog)
                         return (
+                                <>
                                 <div className='blog' key={blog.id}>
                                     <div className="title">{blog.title}</div>
                                     <div className="authorName">By {blog.authorName}</div>
@@ -33,10 +33,11 @@ const ShowOwnBlogs = (props) => {
                                     <div className="content">{blog.content}</div>
                                     <Link to={`/myblog/${blog.id}`}>
                                         <div className="viewblogButton">
-                                        <button >View Blog</button>
+                                        <button>View Blog</button>
                                         </div>
                                     </Link>
                                 </div>
+                                </>
 
                            
                         )

@@ -21,7 +21,7 @@ const ShowOwnBlog = (props) => {
 
     return (
         <>
-            <Header />
+            <Header user_id={props.user_id}/>
             <div className='blog oneblog'>
                 <div className='title'>{blog.title}</div>
                 <div className='authorName'>{blog.authorName}</div>

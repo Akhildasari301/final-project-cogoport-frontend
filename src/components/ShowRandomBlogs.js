@@ -38,7 +38,7 @@ const ShowRandomBlogs = (props) => {
         
       </div>
     </header> */}
-    <Header />
+    <Header user_id={props.user_id}/>
 
             <div className="blogs">
                 {
@@ -46,18 +46,20 @@ const ShowRandomBlogs = (props) => {
                         (blog) => {
                             // console.log(blog)
                             return (
-                                <div className='blog' key={blog.id}>
+                                <div className='blog show-random-blog' key={blog.id}>
                                     <div className='blog-body'>
                                     <div className="title">{blog.title}</div>
                                     <div className="authorName">By {blog.authorName}</div>
                                     <div className='created-at'>created at: {blog.created_at}</div>
                                     <div className="content">{blog.content}</div>
                                     </div>
+                                    <div>
                                     <Link to={`/myblog/${blog.id}`}>
                                         <div className="viewblogButton">
                                             <button >View Blog</button>
                                         </div>
                                     </Link>
+                                    </div>
                                 </div>
 
 

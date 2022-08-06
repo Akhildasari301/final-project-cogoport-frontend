@@ -2,6 +2,7 @@ import Header from './Header'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import HackerError from './HackerError'
 
 const CreateBlog = (props) => {
 
@@ -23,11 +24,12 @@ const CreateBlog = (props) => {
     }
     return (
         <>
-        <Header />
+        <Header user_id={props.user_id}/>
+        <HackerError user_id={props.user_id}/>
             <div className="">
                 <form className="create-blog" onSubmit={onClickCreate}>
                     <input type='hidden' value={props.user_id} name={"user_id"}></input>
-                    <input type='text' placeholder="Title of the Blog" name="title" onChange={(e) => setTitle(e.target.value)}></input>
+                    <input type='text' placeholder="Title of the Blog" name="title" onChange={(e) => setTitle(e.target.value)} className="create-title"></input>
                     {console.log(props.user_name)}
                     <input type='hidden' value={props.user_name} name={"authorName"}></input>
                     <br></br>
